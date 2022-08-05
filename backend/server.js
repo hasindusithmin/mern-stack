@@ -1,7 +1,7 @@
 require('dotenv').config()
 
 const express = require('express')
-
+const workOutRoute = require('./routes/workouts')
 // express app
 const app = express()
 
@@ -10,6 +10,8 @@ app.use((req, res, next) => {
   console.log(req.path, req.method)
   next()
 })
+// middleware
+app.use("/api/workout",workOutRoute)
 
 // routes(root)
 app.get('/', (req, res) => {
